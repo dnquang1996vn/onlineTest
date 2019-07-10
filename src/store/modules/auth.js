@@ -1,6 +1,10 @@
 import * as type from "../type";
 import authService from "@/services/authService";
-import { setStorage, getUserStorage } from "@/helpers/localStorage";
+import {
+  setStorage,
+  getUserStorage,
+  clearStorage
+} from "@/helpers/localStorage";
 
 const initUser = {
   email: "",
@@ -31,6 +35,10 @@ const auth = {
       };
       setStorage(user);
       commit(type.MUTATE_USER, user);
+    },
+    async [type.LOGOUT]({ commit }) {
+      clearStorage();
+      commit(type.MUTATE_USER, initUser);
     }
   }
 };

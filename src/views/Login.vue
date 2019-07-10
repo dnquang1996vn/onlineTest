@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="login">
     <LoginForm />
   </div>
 </template>
@@ -13,4 +13,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(94vh - 7rem);
+}
+</style>

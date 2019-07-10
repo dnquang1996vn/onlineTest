@@ -1,16 +1,15 @@
 <template>
-  <form @submit.prevent="login">
-    <label>
-      email:
-      <input type="text" v-model="payload.email" />
-    </label>
-    <label>
-      password:
-      <input type="password" v-model="payload.password" />
-    </label>
-    <button>submit</button>
-    {{ error }}
-  </form>
+  <el-form class="login-form" label-width="100px">
+    <el-form-item label="Name">
+      <el-input v-model="payload.email"></el-input>
+    </el-form-item>
+    <el-form-item label="Activity zone">
+      <el-input v-model="payload.password"></el-input>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click.prevent="login">Login</el-button>
+    </el-form-item>
+  </el-form>
 </template>
 
 <script>
@@ -40,4 +39,9 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.login-form {
+  border: 1px solid var(--color-grey-dark-3);
+  padding: 4rem;
+}
+</style>

@@ -4,7 +4,7 @@ export const getUserStorage = () =>
 export const getTokenStorage = () => {
   let user = getUserStorage();
   console.log(user);
-  return user.idToken;
+  return user ? user.idToken : "";
 };
 
 export const setStorage = user => {
@@ -12,7 +12,5 @@ export const setStorage = user => {
 };
 
 export const clearStorage = () => {
-  localStorage.removeItem("access_token");
-  localStorage.removeItem("refresh_token");
   localStorage.removeItem("auth_user");
 };
