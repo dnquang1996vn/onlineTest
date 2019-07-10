@@ -1,13 +1,14 @@
 <template>
-  <div>
-    {{ posts }}
+  <div class="post-list">
+    <PostItem v-for="post in posts" :key="post.id" :post="post" />
   </div>
 </template>
 
 <script>
 import { FETCH_POSTS } from "@/store/type";
-
+import PostItem from "./PostItem";
 export default {
+  components: { PostItem },
   computed: {
     posts() {
       return this.$store.state.post.posts;
@@ -19,4 +20,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+</style>

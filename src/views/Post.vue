@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div>
+  <div class="post-page">
+    <div class="add-post-box">
       <h1>Add new post</h1>
       <AddPostForm />
     </div>
@@ -20,4 +20,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style>
+.post-page {
+  text-align: center;
+  padding: 2rem 4rem 0 4rem;
+}
+.add-post-box {
+  padding: 2rem 10rem;
+}
+</style>

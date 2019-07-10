@@ -1,17 +1,16 @@
 <template>
-  <form @submit.prevent="addNewPost">
-    <label>
-      Title:
-      <input v-model="payload.title" type="text" />
-    </label>
-    <br />
-    <label>
-      Content:
-      <textarea v-model="payload.content"></textarea>
-    </label>
-    <br />
-    <button>Add</button>
-  </form>
+  <el-form ref="form" :model="payload" label-width="150px">
+    <el-form-item label="Title">
+      <el-input v-model="payload.title"></el-input>
+    </el-form-item>
+    <el-form-item label="Content">
+      <el-input type="textarea" v-model="payload.content"></el-input>
+    </el-form-item>
+    <el-form-item>
+      <el-button type="primary" @click="addNewPost">Create</el-button>
+      <el-button>Cancel</el-button>
+    </el-form-item>
+  </el-form>
 </template>
 
 <script>

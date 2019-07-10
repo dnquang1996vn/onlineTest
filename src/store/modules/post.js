@@ -20,6 +20,13 @@ const post = {
         ...payload
       });
     },
+    async [type.ADD_NEW_POST]({ commit }, payload) {
+      let res = await postService.addNewPost(payload);
+      commit(type.ADD_NEW_POST, {
+        id: res.data.name,
+        ...payload
+      });
+    },
     async [type.FETCH_POSTS]({ commit }) {
       let res = await postService.fetchPosts();
       const data = res.data;
