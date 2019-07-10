@@ -1,13 +1,17 @@
 import axios from "axios";
-let key = "AIzaSyAqeHIFZMNrIrd2AsuDx68_AemUnz5Nc9Q";
+import { getTokenStorage } from "@/helpers/localStorage";
+
+let token = getTokenStorage();
 
 const instance = axios.create({
   baseURL: "https://authen-api-b001b.firebaseio.com"
 });
+
+//config jwt token for request
 instance.interceptors.request.use(config => ({
   ...config,
   params: {
-    auth: key,
+    auth: token,
     ...config.params
   }
 }));

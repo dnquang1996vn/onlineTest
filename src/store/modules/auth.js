@@ -23,7 +23,6 @@ const auth = {
   actions: {
     async [type.LOGIN]({ commit }, payload) {
       const res = await authService.login(payload);
-      console.log(res.data);
       const { email, idToken, refreshToken } = res.data;
       const user = {
         email,

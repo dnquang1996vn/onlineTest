@@ -1,6 +1,11 @@
-export const getTokenStorage = () => localStorage.getItem("access_token");
 export const getUserStorage = () =>
   JSON.parse(localStorage.getItem("auth_user"));
+
+export const getTokenStorage = () => {
+  let user = getUserStorage();
+  console.log(user);
+  return user.idToken;
+};
 
 export const setStorage = user => {
   localStorage.setItem("auth_user", JSON.stringify(user));
