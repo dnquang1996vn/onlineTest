@@ -21,7 +21,7 @@ export default {
     return {
       payload: {
         email: "demo@gmail.com",
-        password: "nhatquang172"
+        password: "demo1234"
       }
     };
   },
