@@ -9,6 +9,11 @@ import { FETCH_POSTS } from "@/store/type";
 import PostItem from "./PostItem";
 export default {
   components: { PostItem },
+  data() {
+    return {
+      dialogVisible: false
+    };
+  },
   computed: {
     posts() {
       return this.$store.state.post.posts;

@@ -2,21 +2,55 @@
   <el-card class="box-card">
     <div slot="header" class="clearfix">
       <span class="post-title">{{ post.title }}</span>
-      <el-row>
-        <el-button type="primary" icon="el-icon-edit" circle></el-button>
-        <el-button type="danger" icon="el-icon-delete" circle></el-button>
+      <el-row style="float: right">
+        <el-button
+          @click="openEditModal"
+          type="primary"
+          icon="el-icon-edit"
+          circle
+        ></el-button>
+        <el-button
+          @click="deletePost"
+          type="danger"
+          icon="el-icon-delete"
+          circle
+        ></el-button>
       </el-row>
     </div>
     <div>
       {{ post.content }}
     </div>
+    <PostEditModal
+      :post="post"
+      :dialog-visible="isOpenEditModal"
+      @close="closeEditModal"
+    />
   </el-card>
 </template>
 
 <script>
-export default {
-  props: ["post"],
+import { DELETE_POST } from "@/store/type";
+import PostEditModal from "./PostEditModal.vue";
 
+export default {
+  components: { PostEditModal },
+  props: ["post"],
+  data() {
+    return {
+      isOpenEditModal: false
+    };
+  },
+  methods: {
+    deletePost() {
+      this.$store.dispatch(DELETE_POST, this.post.id);
+    },
+    closeEditModal() {
+      this.isOpenEditModal = false;
+    },
+    openEditModal() {
+      this.isOpenEditModal = true;
+    }
+  }
 };
 </script>
 

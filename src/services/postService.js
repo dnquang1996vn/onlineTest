@@ -9,9 +9,9 @@ export default {
   fetchPosts() {
     return axios.get("/posts.json");
   },
-  editPost(id, payload) {
+  editPost(payload) {
     return axios.patch("/posts.json", {
-      [id]: payload
+      [payload.id]: { title: payload.title, content: payload.content }
     });
   },
   deletePost(id) {

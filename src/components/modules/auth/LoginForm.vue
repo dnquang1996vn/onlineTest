@@ -1,10 +1,26 @@
 <template>
   <el-form class="login-form" label-width="100px">
+    <el-alert v-if="error" :title="error" type="error"> </el-alert>
+
     <el-form-item label="Name">
-      <el-input v-model="payload.email"></el-input>
+      <el-input
+        v-model="payload.email"
+        :rules="[
+          {
+            required: true,
+            message: 'Please input email address',
+            trigger: 'blur'
+          },
+          {
+            type: 'email',
+            message: 'Please input correct email address',
+            trigger: ['blur', 'change']
+          }
+        ]"
+      ></el-input>
     </el-form-item>
-    <el-form-item label="Activity zone">
-      <el-input v-model="payload.password"></el-input>
+    <el-form-item label="Password">
+      <el-input v-model="payload.password" type="password" required></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click.prevent="login">Login</el-button>

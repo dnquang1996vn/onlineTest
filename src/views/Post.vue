@@ -22,7 +22,6 @@ export default {
 
 <style>
 .post-page {
-  text-align: center;
   padding: 2rem 4rem 0 4rem;
 }
 .add-post-box {
