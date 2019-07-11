@@ -1,29 +1,16 @@
 # interview
 
-## Project setup
+## Description
+**Api**: firebase
+
+**Client**: vue cli3 
+
+## Project installation
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
+go to link http://localhost:8080/
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Things can be improved
+Can move api key and base url of firebase to .env

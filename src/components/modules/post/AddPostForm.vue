@@ -26,7 +26,6 @@
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="addNewPost">Create</el-button>
-      <el-button @click="resetForm('addPostForm')">Reset</el-button>
     </el-form-item>
   </el-form>
 </template>
