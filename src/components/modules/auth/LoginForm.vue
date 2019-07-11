@@ -1,29 +1,44 @@
 <template>
-  <el-form class="login-form" label-width="100px">
+  <el-form
+    class="login-form"
+    label-width="100px"
+    :model="payload"
+    ref="loginForm"
+  >
     <el-alert v-if="error" :title="error" type="error"> </el-alert>
 
-    <el-form-item label="Name">
-      <el-input
-        v-model="payload.email"
-        :rules="[
-          {
-            required: true,
-            message: 'Please input email address',
-            trigger: 'blur'
-          },
-          {
-            type: 'email',
-            message: 'Please input correct email address',
-            trigger: ['blur', 'change']
-          }
-        ]"
-      ></el-input>
+    <el-form-item
+      label="Email"
+      prop="email"
+      :rules="[
+        {
+          required: true,
+          message: 'Please input email address'
+        },
+        {
+          type: 'email',
+          message: 'Please input correct email address'
+        }
+      ]"
+    >
+      <el-input v-model="payload.email"></el-input>
     </el-form-item>
-    <el-form-item label="Password">
+    <el-form-item
+      label="Password"
+      prop="password"
+      :rules="[
+        {
+          required: true,
+          message: 'Please input password'
+        }
+      ]"
+    >
       <el-input v-model="payload.password" type="password" required></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click.prevent="login">Login</el-button>
+      <el-button type="primary" @click.prevent="login('loginForm')"
+        >Login</el-button
+      >
     </el-form-item>
   </el-form>
 </template>
@@ -41,15 +56,19 @@ export default {
     };
   },
   methods: {
-    login() {
-      this.$store
-        .dispatch(LOGIN, this.payload)
-        .then(() => {
-          this.$router.push("/post");
-        })
-        .catch(error => {
-          this.error = error.response.data.error.message;
-        });
+    login(formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          this.$store
+            .dispatch(LOGIN, this.payload)
+            .then(() => {
+              this.$router.push("/post");
+            })
+            .catch(error => {
+              this.error = error.response.data.error.message;
+            });
+        }
+      });
     }
   }
 };

@@ -33,8 +33,8 @@ const auth = {
         idToken,
         refreshToken
       };
-      setStorage(user);
       commit(type.MUTATE_USER, user);
+      setStorage(user);
     },
     async [type.LOGOUT]({ commit }) {
       clearStorage();

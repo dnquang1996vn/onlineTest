@@ -5,11 +5,29 @@
     :show-close="false"
     width="30%"
   >
-    <el-form ref="form" :model="payload" label-width="90px">
-      <el-form-item label="Title">
+    <el-form :ref="payload.id" :model="payload" label-width="90px">
+      <el-form-item
+        label="Title"
+        prop="title"
+        :rules="[
+          {
+            required: true,
+            message: 'Please input title'
+          }
+        ]"
+      >
         <el-input v-model="payload.title"></el-input>
       </el-form-item>
-      <el-form-item label="Content">
+      <el-form-item
+        label="Content"
+        prop="content"
+        :rules="[
+          {
+            required: true,
+            message: 'Please input content'
+          }
+        ]"
+      >
         <el-input type="textarea" v-model="payload.content"></el-input>
       </el-form-item>
     </el-form>
@@ -39,8 +57,12 @@ export default {
       this.closeModal();
     },
     submitEdit() {
-      this.$store.dispatch(EDIT_POST, this.payload).then(() => {
-        this.closeModal();
+      this.$refs[this.payload.id].validate(valid => {
+        if (valid) {
+          this.$store.dispatch(EDIT_POST, this.payload).then(() => {
+            this.closeModal();
+          });
+        }
       });
     }
   }
