@@ -26,5 +26,10 @@ export default {
 }
 .add-post-box {
   padding: 2rem 10rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--color-grey-light-3);
+  border-bottom: 1px solid;
 }
 </style>

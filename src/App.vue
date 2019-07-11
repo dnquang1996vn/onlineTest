@@ -14,6 +14,9 @@ export default {
   }
 };
 </script>
+<style>
+@import "~nprogress/nprogress.css";
+</style>
 <style lang="scss">
 @import "~@/assets/styles/base.scss";
 @import "~@/assets/styles/common.scss";

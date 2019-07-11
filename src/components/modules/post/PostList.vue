@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     posts() {
-      return this.$store.state.post.posts;
+      return [...this.$store.state.post.posts].reverse();
     }
   },
   mounted() {

@@ -1,5 +1,5 @@
 <template>
-  <el-form :model="payload" ref="addPostForm" label-width="150px">
+  <el-form :model="payload" :ref="formName" label-width="150px">
     <el-form-item
       label="Title"
       prop="title"
@@ -25,9 +25,8 @@
       <el-input type="textarea" v-model="payload.content"></el-input>
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" @click="addNewPost('addPostForm')"
-        >Create</el-button
-      >
+      <el-button type="primary" @click="addNewPost">Create</el-button>
+      <el-button @click="resetForm('addPostForm')">Reset</el-button>
     </el-form-item>
   </el-form>
 </template>
@@ -38,6 +37,7 @@ import { ADD_NEW_POST } from "@/store/type";
 export default {
   data() {
     return {
+      formName: "addPostForm",
       payload: {
         title: "",
         content: ""
@@ -45,10 +45,19 @@ export default {
     };
   },
   methods: {
-    addNewPost(formName) {
-      this.$refs[formName].validate(valid => {
+    clearData() {
+      this.payload = {
+        title: "",
+        content: ""
+      };
+      this.$refs[this.formName].resetFields();
+    },
+    addNewPost() {
+      this.$refs[this.formName].validate(valid => {
         if (valid) {
-          this.$store.dispatch(ADD_NEW_POST, this.payload);
+          this.$store.dispatch(ADD_NEW_POST, this.payload).then(() => {
+            this.clearData();
+          });
         }
       });
     }
