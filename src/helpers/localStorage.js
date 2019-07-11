@@ -3,7 +3,6 @@ export const getUserStorage = () =>
 
 export const getTokenStorage = () => {
   let user = getUserStorage();
-  console.log(user);
   return user ? user.idToken : "";
 };
 
