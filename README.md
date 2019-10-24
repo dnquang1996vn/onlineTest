@@ -7,7 +7,7 @@
 
 ## Notes
 - a simple app for skill demonstration
-- trying to structure the code in a well design
+- trying to structure the pr in a well design and clean code
 
 **Api**: firebase
 
